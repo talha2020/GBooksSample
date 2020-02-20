@@ -1,7 +1,11 @@
 package com.example.gbookssample
 
+import android.app.SearchManager
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -42,7 +46,31 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        mainActivityViewModel.getBooks("Titan")
+        //mainActivityViewModel.getBooks("Titan")
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main_activity, menu)
+
+        val searchMenuItem = menu?.findItem(R.id.search)
+        val searchView = searchMenuItem?.actionView as SearchView
+
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
+                query?.let { mainActivityViewModel.getBooks(it) }
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return false
+            }
+
+        })
+
+        return true
+    }
+
 }
