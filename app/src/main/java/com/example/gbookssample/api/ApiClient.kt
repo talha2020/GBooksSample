@@ -1,6 +1,5 @@
 package com.example.gbookssample.api
 
-import android.util.Log
 import com.example.gbookssample.BuildConfig
 import com.example.gbookssample.com.example.gbookssample.api.ApiEndPoints
 import com.example.gbookssample.com.example.gbookssample.data.Volume
@@ -12,6 +11,7 @@ import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import okhttp3.logging.HttpLoggingInterceptor
+import java.lang.Exception
 import javax.inject.Inject
 
 class ApiClient @Inject constructor() {
@@ -31,10 +31,17 @@ class ApiClient @Inject constructor() {
         expectSuccess = true
     }
 
-    suspend fun getBooks(query: String){
+    suspend fun getBooks(query: String): ApiResponse<Volume>{
         val url = ApiEndPoints.FETCH_BOOKS
-        val res = client.get<Volume>(url) {
-            parameter("q", query)
+        return try {
+            //TODO: Not handling error cases fully here
+            val response = client.get<Volume>(url) {
+                parameter("q", query)
+            }
+            ApiResponse(data = response)
+        } catch (ex: Exception){
+            ex.printStackTrace()
+            ApiResponse(null, ApiError(message = ex.message))
         }
     }
 
