@@ -2,6 +2,7 @@ package com.example.gbookssample
 
 import android.app.Application
 import com.example.gbookssample.com.example.gbookssample.ViewModelModule
+import com.example.gbookssample.main.MainActivity
 import com.facebook.stetho.Stetho
 import dagger.Component
 

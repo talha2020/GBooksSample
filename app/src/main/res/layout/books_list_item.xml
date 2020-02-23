@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listItem"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/default_padding"
@@ -11,12 +12,6 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/textsize_heading_6"
         android:textStyle="bold"/>
-
-<!--    <TextView
-        android:id="@+id/subtitleTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/textsize_heading_6"/>-->
 
     <TextView
         android:id="@+id/authorTv"

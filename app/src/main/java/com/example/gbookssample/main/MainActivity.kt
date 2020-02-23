@@ -1,5 +1,6 @@
-package com.example.gbookssample
+package com.example.gbookssample.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -9,10 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gbookssample.*
 import com.example.gbookssample.com.example.gbookssample.BooksListViewHolder
 import com.example.gbookssample.com.example.gbookssample.data.Item
 import com.example.gbookssample.com.example.gbookssample.data.UIResponse.*
 import com.example.gbookssample.com.example.gbookssample.data.Volume
+import com.example.gbookssample.detail.BookDetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -81,11 +84,19 @@ class MainActivity : AppCompatActivity() {
                 return R.layout.books_list_item
             }
             override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
-                return BooksListViewHolder(view)
+                return BooksListViewHolder(view, onItemClick = {
+                    launchBookDetailActivity(it)
+                })
             }
         }
         booksRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         booksRv.adapter = adapter
+    }
+
+    private fun launchBookDetailActivity(item: Item) {
+        val intent = Intent(this, BookDetailActivity::class.java)
+        intent.putExtra(BOOK_KEY, item)
+        startActivity(intent)
     }
 
 }

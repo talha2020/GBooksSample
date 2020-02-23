@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 
+const val BOOK_KEY = "book_key"
+
 fun View.show(){
     this.visibility = View.VISIBLE
 }

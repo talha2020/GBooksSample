@@ -2,14 +2,13 @@ package com.example.gbookssample.com.example.gbookssample
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.gbookssample.MainActivityViewModel
+import com.example.gbookssample.main.MainActivityViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
 import dagger.multibindings.IntoMap
 import javax.inject.Inject
 import javax.inject.Provider
-import javax.inject.Singleton
 import kotlin.reflect.KClass
 
 //@Singleton

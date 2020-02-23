@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/default_margin"
+    tools:context=".detail.BookDetailActivity">
+
+        <ImageView
+            android:id="@+id/bookIv"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            tools:src="@android:drawable/ic_menu_search"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/bookIv"
+            android:paddingStart="@dimen/default_padding"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textsize_heading_6"
+                android:textStyle="bold"
+                tools:text="Harry Potter"/>
+
+            <TextView
+                android:id="@+id/subtitleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textsize_heading_6"
+                tools:text="Harry Potter and his wacky adventures......"/>
+
+            <TextView
+                android:id="@+id/authorTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textsize_normal"
+                tools:text="J. K. Rowling"/>
+        </LinearLayout>
+
+</RelativeLayout>
+
