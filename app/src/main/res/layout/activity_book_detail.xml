@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/bookIv"
             android:paddingStart="@dimen/default_padding"
+            android:paddingEnd="@dimen/default_padding"
             android:orientation="vertical">
 
             <TextView

@@ -1,4 +1,4 @@
-package com.example.gbookssample.com.example.gbookssample.data
+package com.example.gbookssample
 
 import com.example.gbookssample.api.ApiError
 

@@ -5,8 +5,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gbookssample.GenericAdapter
+import com.example.gbookssample.Item
 import com.example.gbookssample.R
-import com.example.gbookssample.com.example.gbookssample.data.Item
 
 class BooksListViewHolder(itemView: View,
                           val onItemClick: (Item) -> Unit): RecyclerView.ViewHolder(itemView),

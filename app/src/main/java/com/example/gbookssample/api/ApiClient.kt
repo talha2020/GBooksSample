@@ -1,8 +1,8 @@
 package com.example.gbookssample.api
 
 import com.example.gbookssample.BuildConfig
+import com.example.gbookssample.Volume
 import com.example.gbookssample.com.example.gbookssample.api.ApiEndPoints
-import com.example.gbookssample.com.example.gbookssample.data.Volume
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp

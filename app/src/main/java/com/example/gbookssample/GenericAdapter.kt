@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class GenericAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    var listItems: List<T>
+    private var listItems: List<T>
 
     constructor(listItems: List<T>) {
         this.listItems = listItems

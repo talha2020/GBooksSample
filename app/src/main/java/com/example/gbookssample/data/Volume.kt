@@ -1,4 +1,4 @@
-package com.example.gbookssample.com.example.gbookssample.data
+package com.example.gbookssample
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

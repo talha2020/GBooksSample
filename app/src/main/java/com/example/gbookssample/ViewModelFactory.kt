@@ -36,6 +36,3 @@ abstract class ViewModelModule {
 
     //Add more ViewModels here
 }
-
-//TODO: Try to understand what's going on here
-//https://proandroiddev.com/viewmodel-with-dagger2-architecture-components-2e06f06c9455

@@ -11,10 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gbookssample.*
+import com.example.gbookssample.UIResponse.*
 import com.example.gbookssample.com.example.gbookssample.BooksListViewHolder
-import com.example.gbookssample.com.example.gbookssample.data.Item
-import com.example.gbookssample.com.example.gbookssample.data.UIResponse.*
-import com.example.gbookssample.com.example.gbookssample.data.Volume
 import com.example.gbookssample.detail.BookDetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -42,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 is Error -> {
                     progressBar.setGone()
-                    showError("error: ${response.error.message}")
+                    showError("Error: ${response.error.message}")
                 }
             }
 
@@ -77,9 +75,10 @@ class MainActivity : AppCompatActivity() {
             return
         }
         //TODO: Avoid creating a new adapter everytime
+        // normally i would update the recycler view items and then notify the adapter. Leaving it like this due to shortage of time.
 
         val books = volume.items
-        val adapter = object : GenericAdapter<Item>(books!!) {
+        val adapter = object : GenericAdapter<Item>(books) {
             override fun getLayoutId(position: Int, obj: Item): Int {
                 return R.layout.books_list_item
             }
