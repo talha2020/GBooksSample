@@ -1,19 +1,18 @@
 package com.example.gbookssample
 
-import android.app.SearchManager
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import android.widget.SearchView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.gbookssample.com.example.gbookssample.data.UIResponse
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.gbookssample.com.example.gbookssample.BooksListViewHolder
+import com.example.gbookssample.com.example.gbookssample.data.Item
 import com.example.gbookssample.com.example.gbookssample.data.UIResponse.*
 import com.example.gbookssample.com.example.gbookssample.data.Volume
-import com.example.gbookssample.com.example.gbookssample.setGone
-import com.example.gbookssample.com.example.gbookssample.show
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -36,17 +35,15 @@ class MainActivity : AppCompatActivity() {
                 }
                 is Data<Volume> ->{
                     progressBar.setGone()
-                    Toast.makeText(this, "Total items: ${response.data.totalItems}", Toast.LENGTH_LONG).show()
+                    showBooks(response.data)
                 }
                 is Error -> {
                     progressBar.setGone()
-                    Toast.makeText(this, "error: ${response.error.message}", Toast.LENGTH_LONG).show()
+                    showError("error: ${response.error.message}")
                 }
             }
 
         })
-
-        //mainActivityViewModel.getBooks("Titan")
 
     }
 
@@ -55,7 +52,6 @@ class MainActivity : AppCompatActivity() {
 
         val searchMenuItem = menu?.findItem(R.id.search)
         val searchView = searchMenuItem?.actionView as SearchView
-
 
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -69,8 +65,27 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
-
         return true
+    }
+
+    private fun showBooks(volume: Volume){
+        if (volume.items.isNullOrEmpty()){
+            showError(getString(R.string.no_books_found))
+            return
+        }
+        //TODO: Avoid creating a new adapter everytime
+
+        val books = volume.items
+        val adapter = object : GenericAdapter<Item>(books!!) {
+            override fun getLayoutId(position: Int, obj: Item): Int {
+                return R.layout.books_list_item
+            }
+            override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
+                return BooksListViewHolder(view)
+            }
+        }
+        booksRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        booksRv.adapter = adapter
     }
 
 }

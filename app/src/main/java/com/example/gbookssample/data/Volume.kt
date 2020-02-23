@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName
 data class Volume (
     @SerializedName("kind") val kind : String,
     @SerializedName("totalItems") val totalItems : Int,
-    @SerializedName("items") val items : List<Items>?
+    @SerializedName("items") val items : List<Item>?
 )
 
-data class Items (
+data class Item (
     @SerializedName("kind") val kind : String,
     @SerializedName("id") val id : String,
     @SerializedName("etag") val etag : String,
@@ -24,7 +24,7 @@ data class VolumeInfo (
     @SerializedName("authors") val authors : List<String>?,
     @SerializedName("publishedDate") val publishedDate : String,
     @SerializedName("printType") val printType : String,
-    @SerializedName("averageRating") val averageRating : Int,
+    @SerializedName("averageRating") val averageRating : Double,
     @SerializedName("ratingsCount") val ratingsCount : Int,
     @SerializedName("maturityRating") val maturityRating : String,
     @SerializedName("allowAnonLogging") val allowAnonLogging : Boolean,
